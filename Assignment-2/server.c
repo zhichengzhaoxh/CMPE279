@@ -68,7 +68,7 @@ int main(int argc, char const *argv[])
     }
 
     pid_t pid = fork();
-
+    int status = 0;
     if (pid == 0) {
         setuid(getpwnam("nobody")->pw_uid);
 
@@ -78,7 +78,7 @@ int main(int argc, char const *argv[])
         printf("Hello message sent\n");
     } else if (pid > 0) {
         waitpid(pid, &status, 0);
-        printf("Parent process")
+        printf("Parent process");
     } else {
         printf("Error");
         return 0;
